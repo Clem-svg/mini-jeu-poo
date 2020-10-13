@@ -72,7 +72,7 @@ class HumanPlayer < Player
     if random == 1
       puts "Déso, il n'y a rien à voir ici, circule"
     elsif random == 6
-      puts "Wouhou, tu as trouvé 80pts de vie ! Bien joué ! Maintenant on les chope et on se tire !"
+      puts "Wouhou, tu as trouvé 80pts de vie ! Bien joué ! Maintenant on les chope et on se tire !" #On verifie que le nombre de points de vie avec le bonus trouvé ne dépasse pas 100
       if @life_points + 50 >= 100
         @life_points = 100
       else @life_points += 50

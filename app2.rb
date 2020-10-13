@@ -1,7 +1,7 @@
 require 'bundler'
 Bundler.require
 
-require_relative 'lib/game'
+# require_relative 'lib/game'
 require_relative 'lib/player'
 
   #Message d'accueil
@@ -32,7 +32,7 @@ require_relative 'lib/player'
 
   sleep 1
 
-  while user.life_points >0 && (player1.life_points > 0 || player2.life_points >0)
+  while user.life_points >0 && (player1.life_points > 0 || player2.life_points >0) #On reste dans la boucle tant que user est vivant et que au moins un des ennemies l'est
     puts "#{user.show_state}"
     puts ""
     puts "--------------------------"
@@ -43,7 +43,7 @@ require_relative 'lib/player'
     puts "a - cherche une meilleure arme"
     puts "s - cherche à te soigner"
     puts ""
-    puts "Attaquer un joueur en vue :"
+    puts "Attaquer un joueur en vue :" #On essaye d'adapter le menu au déroulement du jeu : si l'ennemi n'a plus de points de vie, on affiche qu'il est mort
     if player1.life_points <= 0
       puts "#{player1.name} est dead"
     else
@@ -80,7 +80,7 @@ require_relative 'lib/player'
 
     end
 
-    break if user.life_points <= 0 || (player1.life_points <= 0 && player2.life_points <= 0)
+    break if user.life_points <= 0 || (player1.life_points <= 0 && player2.life_points <= 0) #avant de relance des attaques : on vérifie que l'user est encore vivant ou qu'au moins un des ennmis l'est. Sinon le jeu est fini
 
     puts ""
     puts "¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*"
@@ -88,7 +88,7 @@ require_relative 'lib/player'
     puts "¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*¤¤*"
     puts ""
     gets.chomp
-    enemies.each do |bad_guy|
+    enemies.each do |bad_guy| #chaque ennemi attaqye l'user tour à tour
       if bad_guy.life_points > 0
       bad_guy.attacks(user)
       puts "------------"
